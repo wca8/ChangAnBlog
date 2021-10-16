@@ -1,0 +1,9 @@
+const TOKEN_STATUS='user/TOKEN_STATUS'
+const USER_DETAIL='user/USER_DETAIL'
+const FOOTER_HEIGHT='index/FOOTER_HEIGHT'
+export{
+    TOKEN_STATUS,
+    USER_DETAIL,
+    FOOTER_HEIGHT
+
+}
