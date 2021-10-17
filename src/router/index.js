@@ -13,6 +13,8 @@ const news=React.lazy(()=>import('../views/news'))
 const shop=React.lazy(()=>import('../views/shop'))
 const articleDetail=React.lazy(()=>import('@/components/article-detail'))
 const login=React.lazy(()=>import('@/components/login'))
+const write=React.lazy(()=>import('@/components/write-article'))
+
 
 const routes = [
     {
@@ -45,6 +47,9 @@ const routes = [
     },{
         path:'/login',
         component:login
+    },{
+        path:'/write',
+        component:write
     }
 ];
 

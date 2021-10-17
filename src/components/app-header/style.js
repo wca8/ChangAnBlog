@@ -61,6 +61,9 @@ export const HeaderWrapper = styled.div`
         }
       }
       .write {
+        .write_article{
+          color: white;
+        }
       }
       .user {
         display: flex;

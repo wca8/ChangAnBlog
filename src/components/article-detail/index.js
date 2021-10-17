@@ -14,7 +14,6 @@ import storage from "@/utils/storage";
 
 import { useScrollPosition } from "@/hooks";
 
-
 export default memo(function ArticleDetail(props) {
   const titleRef = useRef();
   const rightRef = useRef();
@@ -52,6 +51,10 @@ export default memo(function ArticleDetail(props) {
     });
   };
 
+  useEffect(() => {
+    document.title = articleInfo.info&&articleInfo.info.title;
+  });
+
   const position = useScrollPosition();
 
   useEffect(() => {
@@ -68,7 +71,6 @@ export default memo(function ArticleDetail(props) {
       likeRef.current.classList.add("likeCurrent");
     }
   });
-
 
   return (
     <ArticleDetailWrapper>

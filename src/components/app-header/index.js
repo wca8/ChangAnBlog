@@ -10,38 +10,49 @@ import { SearchOutlined, FormOutlined } from "@ant-design/icons";
 import { setUserDetailAction } from "@/store/public-store/actionCreators";
 import { Button, Radio } from "antd";
 import { useToken } from "@/hooks/index";
+import { Link } from "react-router-dom";
+export default memo(function AppHeader() {
 
-export default  memo(function  AppHeader() {
-  const dispatch=useDispatch()
+  let { userDetail } = useSelector(
+    (state) => ({
+      userDetail: state.getIn(["public", "userDetail"]),
+    }),
+    shallowEqual
+  );
+  console.log(userDetail);
+  const dispatch = useDispatch();
 
-  const SetUserDetail=async()=>{
-    const token=await useToken()
-    if(token){
-      dispatch(setUserDetailAction(token))
+  const SetUserDetail = async () => {
+    const token = await useToken();
+    if (token) {
+      dispatch(setUserDetailAction(token));
     }
-  }
-  SetUserDetail()
-  
+  };
+  useEffect(()=>{
+    SetUserDetail();
+  },[])
+ 
+
   return (
     <HeaderWrapper>
       <div className="header">
         <div className="nav-bar">
-        <div className="logo">
-          <img src={LOGO_URL} alt="" />
-        </div>
+          <div className="logo">
+            <img src={LOGO_URL} alt="" />
+          </div>
 
-        <div className="tab-control">
-          {headerLinks.map((item, index) => {
-            return (
-              <div key={item.title}  className="item">
-                <NavLink to={item.link}>
-                  <i className={"iconfont " + item.icon}></i>
-                  {item.title}
-                </NavLink>
-              </div>
-            );
-          })}
-        </div>
+          <div className="tab-control">
+            {headerLinks.map((item, index) => {
+              return (
+                <div key={item.title} className="item">
+                  <NavLink to={item.link}>
+                    <i className={"iconfont " + item.icon}></i>
+                    {item.title}
+                  </NavLink>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         <div className="main-bar">
@@ -61,13 +72,15 @@ export default  memo(function  AppHeader() {
               icon={<FormOutlined />}
               size="middle"
             >
-              写文章
+              <Link to={`/write?uid=${userDetail.id}`} className='write_article' target="_blank" type="" href="">
+                写文章
+              </Link>
             </Button>
           </div>
 
           <div className="user">
-              <div className='login_btn'>登录</div>
-              <div>注册</div>
+            <div className="login_btn">登录</div>
+            <div>注册</div>
           </div>
         </div>
       </div>

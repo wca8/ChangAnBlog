@@ -16,7 +16,18 @@ export async function useToken() {
   return token;
 }
 
-
+export async function isToken() {
+  const token = storage.get('token')
+  if(!token){
+    return false
+  }
+  const res = await getUserTokenStatus(token);
+  console.log(res);
+  if (res.code == 2000) {
+    return false;
+  }
+  return token;
+}
 
 export function useScrollPosition() {
   const [scrollPosition, setScrollPosition] = useState(0);

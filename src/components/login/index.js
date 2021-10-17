@@ -26,6 +26,10 @@ export default memo(function Login() {
   const history = useHistory();
   const dispath = useDispatch();
 
+  useEffect(()=>{
+    document.title='一片月-用户登录'
+  },[])
+
   function callback(key) {
     console.log(key);
     setkey(key);

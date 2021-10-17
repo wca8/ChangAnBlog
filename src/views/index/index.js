@@ -31,6 +31,9 @@ export default memo(function Index() {
     56503: { page: 1, list: [] },
     57388: { page: 1, list: [] },
     57389: { page: 1, list: [] },
+    57505: { page: 1, list: [] },
+    57506: { page: 1, list: [] },
+    57507: { page: 1, list: [] },
   });
   let { categoryList, articleList } = useSelector(
     (state) => ({
